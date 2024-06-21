@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+        <menuitem id="menu_custom_root" name="Custom" sequence="10"/>
+        <menuitem id="menu_to_do_task" name="To-Do Tasks" parent="menu_custom_root" sequence="20" action="action_to_do_task"/>
+
+        <record id="action_to_do_task" model="ir.actions.act_window">
+            <field name="name">To-Do Tasks</field>
+            <field name="res_model">to_do_task</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="view_tree_to_do_task" model="ir.ui.view">
+            <field name="name">to.do.task.tree</field>
+            <field name="model">to_do_task</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="deadline"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_form_to_do_task" model="ir.ui.view">
+            <field name="name">to.do.task.form</field>
+            <field name="model">to_do_task</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="deadline"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

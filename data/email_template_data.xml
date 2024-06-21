@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+        <record id="email_template_to_do_task_reminder" model="mail.template">
+            <field name="name">To-Do Task Reminder</field>
+            <field name="model_id" ref="model_to_do_task"/>
+            <field name="subject">Reminder: To-Do Task Deadline Approaching</field>
+            <field name="email_from">${(user.email_formatted or user.email)|safe}</field>
+            <field name="email_to">${object.user_id.email|safe}</field>
+            <field name="body_html">
+                <![CDATA[
+                <p>Dear ${object.user_id.name},</p>
+                <p>This is a reminder that your task <strong>${object.name}</strong> is due on ${object.deadline}.</p>
+                <p>Regards,<br/>Your To-Do App</p>
+                ]]>
+            </field>
+        </record>
+    </data>
+</odoo>
